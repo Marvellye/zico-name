@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-primary text-text overflow-x-hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.glass {
+  @apply bg-secondary bg-opacity-30 backdrop-blur-lg border border-white/10 rounded-xl;
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+}
