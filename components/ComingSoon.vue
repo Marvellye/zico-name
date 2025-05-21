@@ -13,12 +13,24 @@
         
         <form @submit.prevent="handleSubmit" class="space-y-6 text-left">
           <div>
-            <label for="name" class="block text-sm font-medium text-white mb-1">User Name</label>
+            <label for="name" class="block text-sm font-medium text-white mb-1">Full Name</label>
             <input 
               type="text" 
               id="name"
               v-model="formData.name"
               placeholder="Enter your name"
+              required
+              class="w-full bg-secondary bg-opacity-50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-highlight"
+            />
+          </div>
+          
+          <div>
+            <label for="referralPlatform" class="block text-sm font-medium text-white mb-1">Your Email</label>
+            <input 
+              type="email" 
+              id="email"
+              v-model="formData.email"
+              placeholder="myname@gmail.com"
               required
               class="w-full bg-secondary bg-opacity-50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-highlight"
             />
@@ -37,11 +49,12 @@
           </div>
           
           <div>
-            <label for="fileUpload" class="block text-sm font-medium text-white mb-1">Upload a file (Optional)</label>
+            <label for="fileUpload" class="block text-sm font-medium text-white mb-1">Upload your video file </label>
             <input 
               type="file" 
               id="fileUpload"
               @change="handleFileUpload"
+              required
               class="block w-full text-sm text-white/80
                      file:mr-4 file:py-2 file:px-4
                      file:rounded-lg file:border-0
@@ -71,7 +84,7 @@
           Thank <span class="text-highlight">You!</span>
         </h1>
         <p class="text-lg md:text-xl mb-8 text-white">
-          Your information has been submitted. We're excited to have you with us!
+          Your information has been submitted. We're excited to have you with us! 
         </p>
         <button 
           @click="redirectToCommunity"
