@@ -25,35 +25,13 @@
           </div>
           
           <div>
-            <label for="location" class="block text-sm font-medium text-white mb-1">Where are you from?</label>
+            <label for="referralPlatform" class="block text-sm font-medium text-white mb-1">Which platform are you coming from?</label>
             <input 
               type="text" 
-              id="location"
-              v-model="formData.location"
-              placeholder="e.g., City, Country"
+              id="referralPlatform"
+              v-model="formData.referralPlatform"
+              placeholder="e.g., Facebook, TikTok, Instagram, a Friend"
               required
-              class="w-full bg-secondary bg-opacity-50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-highlight"
-            />
-          </div>
-
-          <div>
-            <label for="facebook" class="block text-sm font-medium text-white mb-1">Facebook Profile URL (Optional)</label>
-            <input 
-              type="url" 
-              id="facebook"
-              v-model="formData.facebook"
-              placeholder="https://facebook.com/yourprofile"
-              class="w-full bg-secondary bg-opacity-50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-highlight"
-            />
-          </div>
-
-          <div>
-            <label for="tiktok" class="block text-sm font-medium text-white mb-1">TikTok Profile URL (Optional)</label>
-            <input 
-              type="url" 
-              id="tiktok"
-              v-model="formData.tiktok"
-              placeholder="https://tiktok.com/@yourusername"
               class="w-full bg-secondary bg-opacity-50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-highlight"
             />
           </div>
@@ -64,7 +42,7 @@
               type="file" 
               id="fileUpload"
               @change="handleFileUpload"
-              class="block w-full text-sm text-white/80 <!-- Text for 'No file chosen' or file name -->
+              class="block w-full text-sm text-white/80
                      file:mr-4 file:py-2 file:px-4
                      file:rounded-lg file:border-0
                      file:text-sm file:font-semibold
@@ -72,9 +50,7 @@
                      hover:file:bg-highlight/80
                      bg-secondary bg-opacity-50 border border-white/10 rounded-lg
                      focus:outline-none focus:ring-2 focus:ring-highlight cursor-pointer
-                     <!-- Adjust padding if needed, default browser styles for file input are tricky -->
-                     pr-4 <!-- Ensure space for the file name text -->
-                     "
+                     pr-4"
             />
             <p v-if="selectedFileName" class="text-xs text-white/70 mt-1">
               Selected file: {{ selectedFileName }}
@@ -114,9 +90,7 @@ import { ref } from 'vue';
 
 const formData = ref({
   name: '',
-  location: '',
-  facebook: '',
-  tiktok: '',
+  referralPlatform: '', // Changed from 'location'
   file: null,
 });
 
@@ -139,15 +113,12 @@ const handleFileUpload = (event) => {
 
 const handleSubmit = async () => {
   // In a real application, you would send the formData to a server.
-  // For file uploads, you'd typically use FormData.
   const dataToLog = { ...formData.value };
   if (dataToLog.file) {
-    // Avoid logging the entire File object, just its name for demonstration
     dataToLog.file = dataToLog.file.name; 
   }
   console.log('Form data submitted:', dataToLog);
 
-  // Simulate a POST request or API call
   // Example:
   // const submissionPackage = new FormData();
   // Object.keys(formData.value).forEach(key => {
@@ -171,12 +142,9 @@ const handleSubmit = async () => {
   //   alert('A network error occurred. Please try again.');
   // }
 
-  // For this example, we'll just set submitted to true
   submitted.value = true;
-
-  // Optionally, you might want to reset the form after successful submission
-  // if you weren't redirecting or changing the view drastically.
-  // formData.value = { name: '', location: '', facebook: '', tiktok: '', file: null };
+  // Reset form fields after successful submission if not redirecting immediately
+  // formData.value = { name: '', referralPlatform: '', file: null };
   // selectedFileName.value = '';
 };
 
@@ -186,18 +154,5 @@ const redirectToCommunity = () => {
 </script>
 
 <style scoped>
-/* You can add any additional styles here if needed,
-   but the goal was to use existing Tailwind classes.
-   The 'glass' class and color variables like 'text-highlight', 'bg-secondary'
-   are assumed to be defined in your global CSS or Tailwind config. */
-
-/* Example of how 'glass' might be defined if not already: */
-/*
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-*/
+/* Styles are inherited or defined in your global CSS / Tailwind config */
 </style>
