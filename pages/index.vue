@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <ThreeScene />
-    <ComingSoon />
+    <Home />
   </div>
 </template>
 
