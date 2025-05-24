@@ -111,7 +111,7 @@ const submitted = ref(false);
 const selectedFileName = ref('');
 
 // Community URL - REPLACE THIS WITH YOUR ACTUAL COMMUNITY URL
-const communityUrl = 'https://discord.gg/example'; // Example URL
+const communityUrl = 'https://chat.whatsapp.com/BvqgPOhE3ZCCnVmFvgQscF'; // Example URL
 
 const handleFileUpload = (event) => {
   const file = event.target.files[0];
